@@ -193,7 +193,7 @@
 
         <!-- Rive Animation Block -->
         <div style="display: flex; justify-content: center; margin: 50px 0 30px 0;">
-            <canvas id="rive-canvas" style="width: 280px; height: 280px; max-width: 100%;"></canvas>
+            <canvas id="rive-canvas" width="500" height="500" style="width: 100%; max-width: 350px; height: auto;"></canvas>
         </div>
         <script src="https://unpkg.com/@rive-app/canvas@latest"></script>
         <script>
@@ -208,6 +208,12 @@
                 }),
             });
         </script>
+        ```
+
+**Что исправлено:**
+Мы добавили `width="500" height="500"` — это говорит движку Rive, в каком разрешении рисовать графику (чтобы не было «мыла»). А в стилях добавили `width: 100%; max-width: 350px; height: auto;`. Теперь анимация никогда не вылезет за пределы экрана на телефонах, не будет больше 350 пикселей на десктопе, а главное — `height: auto` железобетонно сохранит пропорции, и сплющивание исчезнет. 
+
+Сохраняй изменения — ДНК примет свой нормальный объемный вид!
         <!-- End Rive Animation Block -->
 
         <section class="shift-left">
