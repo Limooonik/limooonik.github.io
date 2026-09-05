@@ -182,6 +182,44 @@
       }
     }
     </script>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How to animate iOS widgets without getting rejected by Apple?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The key to passing App Review is avoiding third-party engines and media files. Apple does not prohibit animation as long as it is implemented using energy-efficient system tools. By using 100% pure SwiftUI and zero private APIs, this approach fully complies with the guidelines."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Can I use Lottie or Rive to animate an iOS widget?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The iOS widget environment strictly blocks third-party animation engines. To display complex motion graphics on the Homescreen, the animation must be converted into native SwiftUI code."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do widgets support GIF or video playback?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Using GIFs or video files inside widgets is highly unoptimized. It leads to memory overloads, battery drain, and inevitable App Review rejections. Continuous animation must rely strictly on native vector geometry."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Does continuous widget animation drain the battery?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, energy consumption is minimal. By eliminating heavy image sequences and relying exclusively on the system's built-in mathematical calculations, the animation runs with maximum energy efficiency."
+        }
+      }]
+    }
+    </script>
+    
    
 </head>
 <body>
@@ -222,6 +260,10 @@
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/0i9ZopQgWMY" title="Continuous Native iOS Widget Animation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+
+            <p style="font-size: 0.9rem; color: var(--text-muted); text-align: center; margin-top: 10px; opacity: 0.7;">
+                <em>Video demonstration: Real-time calculation of continuous vector graphics scaling and morphing natively inside an iOS Homescreen widget, maintaining 100% system compliance.</em>
+            </p>
             
             <div class="shift-right">
                 <p>This technology is already implemented in production. Experience the fluid performance on your own device via the App Store:</p>
@@ -237,9 +279,10 @@
             <h2>The Myth vs. The Reality</h2>
             <p><strong>The Myth: "Apple strictly prohibits animating widgets."</strong><br>
             <span style="color: var(--text-muted);">For years, the developer community has believed that continuous motion on the Homescreen is technically blocked because Apple limits widget refresh rates to preserve battery.</span></p>
-            
+
             <p><strong>The Reality: Apple restricts inefficient methods, not native motion.</strong><br>
-            <span style="color: var(--text-muted);">Apple actively penalizes excessive memory consumption, constant network requests, and unoptimized third-party rendering engines. However, when motion is generated entirely within the permitted SwiftUI architecture using native vector mathematics, it operates completely within the rules. This approach is 100% legitimate, utilizes zero private APIs, and seamlessly passes App Review.</span></p>
+<span style="color: var(--text-muted);">Apple actively penalizes excessive memory consumption and unoptimized third-party rendering engines. However, when motion is generated entirely within the permitted SwiftUI architecture utilizing strict view lifecycle management, <code>Animatable</code> state transitions, and hardware-accelerated <code>drawingGroup()</code> compositing, it operates completely within the rules. By relying on deterministic CoreGraphics-level mathematics and native <code>ViewModifier</code> structuring rather than external runtimes, this approach is 100% legitimate, utilizes zero private APIs, and seamlessly passes App Review.</span></p>
+            
         </section>
 
         <section class="shift-left">
