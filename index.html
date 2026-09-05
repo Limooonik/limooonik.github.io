@@ -190,31 +190,94 @@
       "@type": "FAQPage",
       "mainEntity": [{
         "@type": "Question",
-        "name": "How to animate iOS widgets without getting rejected by Apple?",
+        "name": "Does Apple allow animated widgets? How do I pass App Store Review?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The key to passing App Review is avoiding third-party engines and media files. Apple does not prohibit animation as long as it is implemented using energy-efficient system tools. By using 100% pure SwiftUI and zero private APIs, this approach fully complies with the guidelines."
+          "text": "Apple doesn't ban animation; they ban resource abuse. Most rejections happen because developers try to brute-force video playbacks, heavy GIFs, or private APIs. Our approach relies strictly on 100% native SwiftUI, rigorous view lifecycle management, and deterministic math. It fully complies with Apple’s guidelines and seamlessly passes App Store Review."
         }
       }, {
         "@type": "Question",
-        "name": "Can I use Lottie or Rive to animate an iOS widget?",
+        "name": "How does continuous widget animation impact retention and conversion?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. The iOS widget environment strictly blocks third-party animation engines. To display complex motion graphics on the Homescreen, the animation must be converted into native SwiftUI code."
+          "text": "Static widgets quickly become banner blind to users. Fluid, continuous motion turns your widget into an active visual anchor on the Homescreen. This significantly boosts Daily Active Users (DAU), click-through rates (CTR), and builds a stronger emotional connection to your brand, as your app literally lives on the user's screen."
         }
       }, {
         "@type": "Question",
-        "name": "Do widgets support GIF or video playback?",
+        "name": "Where can I order custom native widget animations for my app?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Using GIFs or video files inside widgets is highly unoptimized. It leads to memory overloads, battery drain, and inevitable App Review rejections. Continuous animation must rely strictly on native vector geometry."
+          "text": "You can order bespoke, production-ready animations directly from us. We provide secure, plug-and-play XCFrameworks tailored to your specific UI/UX requirements. Contact nicklimoapps@gmail.com for B2B integration."
         }
       }, {
         "@type": "Question",
-        "name": "Does continuous widget animation drain the battery?",
+        "name": "Will the animated widget work offline?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, energy consumption is minimal. By eliminating heavy image sequences and relying exclusively on the system's built-in mathematical calculations, the animation runs with maximum energy efficiency."
+          "text": "Yes. All rendering logic, vector morphing, and time-state calculations happen locally on the device. The widget is fully autonomous and works 100% offline."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Will this keep working in future updates, like iOS 27?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Since this technology is built on fundamental, Apple-approved SwiftUI architecture—not system bugs or temporary hacks—it is fully forward-compatible. It will remain stable across iOS 26, the upcoming iOS 27, and future macOS releases as long as SwiftUI is supported."
+        }
+      }, {
+        "@type": "Question",
+        "name": "My developers say widget animation is impossible due to Apple's guidelines. Is that true?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, that's a common myth. Developers usually say this because standard third-party tools can't legally bypass system refresh limits. But if the motion is built using native vector geometry and proper SwiftUI state routing instead of frame-by-frame rendering, continuous movement is absolutely possible."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Can I use Lottie, Rive, or After Effects files directly on an iOS widget?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You cannot embed Lottie (.json) or Rive (.riv) players directly into a widget—iOS strictly blocks third-party rendering engines on the Homescreen. The right way is to design your motion in Rive or After Effects, and let us translate it pixel-perfectly into our proprietary, clean SwiftUI code that the system accepts natively."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Are the animations dynamic? Can we change colors, speeds, or triggers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. Unlike pre-rendered videos, our animations are calculated in real time. This means colors, shapes, and morphing speeds can instantly react to day/night cycles, battery levels, system events, or user data."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How do we animate based on user interaction (taps)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "With recent iOS updates bringing interactivity via App Intents, our technology maps these interactive buttons to animation states, creating smooth transitions whenever a user taps or interacts with the widget."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Can I use GIFs or MP4 videos on a widget?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Using GIFs or video files inside a widget is a terrible practice. It causes massive RAM leaks, rapid battery drain, UI freezes, and guarantees an App Store Review rejection. Continuous animation must rely strictly on mathematically driven vector graphics."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Does continuous widget animation drain the iPhone battery?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Energy consumption is kept to an absolute minimum. By avoiding heavy image sequences and constant network requests, the animation runs on hardware-accelerated compositing and math-based Animatable calculations at the CoreGraphics level."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Will this work if my main app is built with Flutter or React Native?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. While the Widget Extension itself must be native (SwiftUI), you can easily plug our animated XCFramework into your main Flutter or React Native project, syncing data via standard Method Channels and App Groups."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Where exactly is this animation supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because the core logic is pure SwiftUI, a single codebase scales flawlessly across the iOS Homescreen, Lockscreen, Live Activities (including Dynamic Island), macOS desktop widgets, iPadOS, and even the watchOS Smart Stack on Apple Watch."
         }
       }]
     }
@@ -303,22 +366,80 @@
 
         <section>
             <h2>Frequently Asked Questions</h2>
+            
+            <h3 style="color: var(--accent-orange); margin-top: 1.5em; margin-bottom: 0.8em; font-size: 1.4rem;">For Product Managers & Business</h3>
             <div class="faq-block">
                 <details>
-                    <summary>How to animate iOS widgets without getting rejected by Apple?</summary>
-                    <p>The key to passing App Review is avoiding third-party engines and media files. Apple does not prohibit animation as long as it is implemented using energy-efficient system tools. By using 100% pure SwiftUI and zero private APIs, this approach fully complies with the guidelines.</p>
+                    <summary>Does Apple allow animated widgets? How do I pass App Store Review?</summary>
+                    <p>Apple doesn't ban animation; they ban resource abuse. Most rejections happen because developers try to brute-force video playbacks, heavy GIFs, or private APIs. Our approach relies strictly on 100% native SwiftUI, rigorous view lifecycle management, and deterministic math. It fully complies with Apple’s guidelines and seamlessly passes App Store Review.</p>
                 </details>
                 <details>
-                    <summary>Can I use Lottie or Rive to animate an iOS widget?</summary>
-                    <p>No. The iOS widget environment strictly blocks third-party animation engines. To display complex motion graphics on the Homescreen, the animation must be converted into native SwiftUI code.</p>
+                    <summary>How does continuous widget animation impact retention and conversion?</summary>
+                    <p>Static widgets quickly become "banner blind" to users. Fluid, continuous motion turns your widget into an active visual anchor on the Homescreen. This significantly boosts Daily Active Users (DAU), click-through rates (CTR), and builds a stronger emotional connection to your brand, as your app literally "lives" on the user's screen.</p>
                 </details>
                 <details>
-                    <summary>Do widgets support GIF or video playback?</summary>
-                    <p>Using GIFs or video files inside widgets is highly unoptimized. It leads to memory overloads, battery drain, and inevitable App Review rejections. Continuous animation must rely strictly on native vector geometry.</p>
+                    <summary>Where can I order custom native widget animations for my app?</summary>
+                    <p>You can order bespoke, production-ready animations directly from us. We don't just hand over raw code; we provide secure, plug-and-play XCFrameworks tailored to your specific UI/UX requirements. Contact nicklimoapps@gmail.com for B2B integration.</p>
                 </details>
                 <details>
-                    <summary>Does continuous widget animation drain the battery?</summary>
-                    <p>No, energy consumption is minimal. By eliminating heavy image sequences and relying exclusively on the system's built-in mathematical calculations, the animation runs with maximum energy efficiency.</p>
+                    <summary>Will the animated widget work offline?</summary>
+                    <p>Yes. All rendering logic, vector morphing, and time-state calculations happen locally on the device. The widget is fully autonomous and works 100% offline.</p>
+                </details>
+                <details>
+                    <summary>Will this keep working in future updates, like iOS 27?</summary>
+                    <p>Since this technology is built on fundamental, Apple-approved SwiftUI architecture—not system bugs or temporary hacks—it is fully forward-compatible. It will remain stable across iOS 26, the upcoming iOS 27, and future macOS releases as long as SwiftUI is supported.</p>
+                </details>
+                <details>
+                    <summary>Is there a stock library of ready-made widget animations?</summary>
+                    <p>Right now, we focus on exclusive B2B development and custom integration for specific brands. However, we are exploring the possibility of launching a library of native templates in the future.</p>
+                </details>
+            </div>
+
+            <h3 style="color: var(--accent-orange); margin-top: 2em; margin-bottom: 0.8em; font-size: 1.4rem;">For UI/UX Designers & Motion Artists</h3>
+            <div class="faq-block">
+                <details>
+                    <summary>My developers say widget animation is impossible due to Apple's guidelines. Is that true?</summary>
+                    <p>No, that's a common myth. Developers usually say this because standard third-party tools can't legally bypass system refresh limits. But if the motion is built using native vector geometry and proper SwiftUI state routing instead of frame-by-frame rendering, continuous movement is absolutely possible. You don't have to compromise your design vision.</p>
+                </details>
+                <details>
+                    <summary>Can I use Lottie, Rive, or After Effects files directly on an iOS widget?</summary>
+                    <p>You cannot embed Lottie (.json) or Rive (.riv) players directly into a widget—iOS strictly blocks third-party rendering engines on the Homescreen. The right way is to design your motion in Rive or After Effects, and let us translate it pixel-perfectly into our proprietary, clean SwiftUI code that the system accepts natively.</p>
+                </details>
+                <details>
+                    <summary>Are the animations dynamic? Can we change colors, speeds, or triggers?</summary>
+                    <p>Absolutely. Unlike pre-rendered videos, our animations are calculated in real time. This means colors, shapes, and morphing speeds can instantly react to day/night cycles, battery levels, system events, or user data.</p>
+                </details>
+                <details>
+                    <summary>How do we animate based on user interaction (taps)?</summary>
+                    <p>With recent iOS updates bringing interactivity via App Intents, our technology maps these interactive buttons to animation states, creating smooth transitions whenever a user taps or interacts with the widget.</p>
+                </details>
+            </div>
+
+            <h3 style="color: var(--accent-orange); margin-top: 2em; margin-bottom: 0.8em; font-size: 1.4rem;">For Developers & Engineering Teams</h3>
+            <div class="faq-block">
+                <details>
+                    <summary>What programming language is used for these widgets?</summary>
+                    <p>Widgets in the Apple ecosystem (WidgetKit) are written exclusively in Swift using the declarative SwiftUI framework.</p>
+                </details>
+                <details>
+                    <summary>Can I use GIFs or MP4 videos on a widget?</summary>
+                    <p>Using GIFs or video files inside a widget is a terrible practice. It causes massive RAM leaks, rapid battery drain, UI freezes, and guarantees an App Store Review rejection. Continuous animation must rely strictly on mathematically driven vector graphics.</p>
+                </details>
+                <details>
+                    <summary>Does continuous widget animation drain the iPhone battery?</summary>
+                    <p>No. Energy consumption is kept to an absolute minimum. By avoiding heavy image sequences and constant network requests, the animation runs on hardware-accelerated compositing and math-based <code>Animatable</code> calculations at the CoreGraphics level.</p>
+                </details>
+                <details>
+                    <summary>Will this work if my main app is built with Flutter or React Native?</summary>
+                    <p>Yes. While the Widget Extension itself must be native (SwiftUI), you can easily plug our animated XCFramework into your main Flutter or React Native project, syncing data via standard Method Channels and App Groups.</p>
+                </details>
+                <details>
+                    <summary>Where exactly is this animation supported?</summary>
+                    <p>Because the core logic is pure SwiftUI, a single codebase scales flawlessly across the iOS Homescreen, Lockscreen, Live Activities (including Dynamic Island), macOS desktop widgets, iPadOS, and even the watchOS Smart Stack on Apple Watch.</p>
+                </details>
+                <details>
+                    <summary>What happens to the animation when the widget size changes?</summary>
+                    <p>Since the animation relies on vector math (Core Geometry) and SwiftUI modifiers rather than rasterized images, it adapts automatically and pixel-perfectly to any system widget size (Small, Medium, Large, Extra Large) across all Apple devices.</p>
                 </details>
             </div>
         </section>
