@@ -50,8 +50,29 @@
         summary { font-weight: 600; font-size: 1.15rem; cursor: pointer; list-style: none; outline: none; }
         summary::-webkit-details-marker { display: none; }
         details p { margin-top: 15px; margin-bottom: 0; color: var(--secondary-text); font-size: 1.05rem; }
+        
+        /* Video Player Styles */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            background-color: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 12px;
+        }
+
         .proof-section { background: var(--section-bg); padding: 30px; border-radius: 16px; margin: 40px 0; }
-        .proof-section h2 { margin-top: 0; border: none; padding-bottom: 0; }
+        .proof-section h2 { margin-top: 0; border: none; padding-bottom: 0; margin-bottom: 20px; }
         .proof-section p:last-child { margin-bottom: 0; }
         footer { margin-top: 60px; font-size: 0.9rem; color: var(--secondary-text); border-top: 1px solid var(--border-color); padding-top: 20px; text-align: center; }
     </style>
@@ -90,7 +111,12 @@
         </section>
 
         <section class="proof-section">
-            <h2>Proof of Work</h2>
+            <h2>Proof of Concept & Stress Test</h2>
+            
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/0i9ZopQgWMY" title="Continuous Native iOS Widget Animation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
             <p>This technology is already implemented in production. Experience the fluid performance on your own device via the App Store:</p>
             <ul>
                 <li><a href="https://apps.apple.com/us/app/clock-widgets-homescreen/id6755961385" target="_blank">Clock Widgets</a> — Native continuous motion on the Homescreen.</li>
@@ -147,7 +173,7 @@
             </details>
 
             <details>
-                <summary>Does continuous widget animation drain the iPhone battery?</summary>
+                <summary>Does continuous widget animation drain the battery?</summary>
                 <p>No, energy consumption is minimal. By eliminating heavy image sequences and relying exclusively on the system's built-in mathematical calculations, the animation runs with maximum energy efficiency.</p>
             </details>
 
@@ -164,7 +190,7 @@
         </section>
 
         <footer>
-            <p>&copy; Limooonik. SwiftUI widget continuous motion approach by Nikita Limo (Nikita Liubimov).</p>
+            <p>&copy; 2026 Limooonik. SwiftUI widget continuous motion approach by Nikita Limo (Nikita Liubimov).</p>
         </footer>
     </div>
 </body>
