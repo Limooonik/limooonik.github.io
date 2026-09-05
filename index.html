@@ -182,6 +182,7 @@
       }
     }
     </script>
+    <script src="https://unpkg.com/@rive-app/canvas@2.9.1"></script>
 </head>
 <body>
     <div class="container">
@@ -189,6 +190,19 @@
             <h1>Continuous Native iOS Widget Animation</h1>
             <p class="subtitle">100% pure SwiftUI. Zero third-party SDKs. Fully passes App Store Review.</p>
         </header>
+
+        <!-- Rive Animation Block -->
+        <div style="display: flex; justify-content: center; margin: 40px 0;">
+            <canvas id="rive-canvas" width="400" height="400" style="max-width: 100%;"></canvas>
+        </div>
+        <script>
+            const r = new rive.Rive({
+                src: 'dna.riv', // Убедись, что название файла совпадает с тем, что ты загрузил
+                canvas: document.getElementById('rive-canvas'),
+                autoplay: true
+            });
+        </script>
+        <!-- End Rive Animation Block -->
 
         <section class="shift-left">
             <p>This approach delivers smooth, continuous motion on the Homescreen, Lockscreen, and within Live Activities. The animation isn't just a looping playback—it dynamically reacts to system states, time, and user interactions in real-time.</p>
