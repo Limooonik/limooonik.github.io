@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Native iOS Motion Design | Widget Animation Services</title>
+    <meta name="description" content="B2B services for continuous native iOS widget animation. I convert complex Lottie/Rive concepts into lightweight, App Store-ready SwiftUI XCFrameworks.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GB3KNCXDJM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GB3KNCXDJM');
+    </script>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-main: #EAEAEA;
+            --text-muted: #A0A0A5;
+            --accent-orange: #FF6B00;
+            --accent-lilac: #9D4EDD;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        body::before {
+            top: -10%; left: -10%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, var(--accent-orange) 0%, transparent 70%);
+        }
+        body::after {
+            bottom: 10%; right: -15%;
+            width: 40vw; height: 40vw;
+            background: radial-gradient(circle, var(--accent-lilac) 0%, transparent 70%);
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 { 
+            font-size: clamp(2.2rem, 4vw, 3rem); 
+            letter-spacing: -0.02em; 
+            font-weight: 800; 
+            line-height: 1.2; 
+            margin-bottom: 0.5em;
+            background: linear-gradient(135deg, #FFF 0%, #A0A0A5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h2 { 
+            font-size: 1.6rem; 
+            letter-spacing: -0.015em; 
+            font-weight: 600; 
+            margin-top: 2.5em; 
+            margin-bottom: 1em;
+            color: #FFF;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.5em;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            color: #FFF;
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        p { font-size: 1.15rem; margin-bottom: 1.5em; color: var(--text-main); }
+        
+        a { color: var(--accent-lilac); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s ease; }
+        a:hover { border-bottom: 1px solid var(--accent-lilac); }
+
+        ul { font-size: 1.15rem; padding-left: 20px; margin-bottom: 2em; color: var(--text-main); }
+        li { margin-bottom: 12px; }
+        li strong { color: #FFF; }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: var(--accent-orange);
+        }
+        
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+
+        footer { 
+            margin-top: 80px; 
+            font-size: 0.9rem; 
+            color: var(--text-muted); 
+            border-top: 1px solid var(--card-border); 
+            padding-top: 30px; 
+            text-align: center; 
+        }
+        
+        .contact-btn {
+            display: inline-block; 
+            margin-top: 30px; 
+            padding: 15px 30px; 
+            background: rgba(157, 78, 221, 0.15); 
+            border: 1px solid var(--accent-lilac); 
+            border-radius: 8px; 
+            color: #FFF; 
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .contact-btn:hover {
+            background: rgba(157, 78, 221, 0.3);
+            border-bottom: 1px solid var(--accent-lilac);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <nav style="margin-bottom: 40px; font-size: 0.95rem; color: var(--text-muted);">
+            <a href="index.html">Home</a> &rarr; <span>B2B Services & Custom Animation</span>
+        </nav>
+
+        <header>
+            <h1>Custom Native iOS Motion Design: Widget & App Engineering</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">From Figma mockup to a compiled, App Store-ready XCFramework.</p>
+        </header>
+
+        <section>
+            <p>Many product teams hit a technical wall when trying to translate complex motion design into production code. Designers create stunning concepts in After Effects or Rive, but when attempting to implement them in an iOS app (especially on Home Screen Widgets), the business receives a firm "no" from their own IT department.</p>
+            <p>Engineers cite strict Apple limits, memory constraints, the inability to use Lottie in WidgetKit, or the risk of battery drain. As a result, innovative features are scrapped, design budgets are wasted, and the product loses its competitive edge.</p>
+            <p>I solve this problem at a fundamental engineering level. I do not use third-party render engines or heavy files. I take your visual concept and translate it into pure native iOS mathematics—Bézier curves, vector transformations, and <code>TimelineProvider</code>. You get what your team called "impossible" delivered as an autonomous, secure, and release-ready XCFramework.</p>
+        </section>
+
+        <section>
+            <h2>Who I Help & Why</h2>
+
+            <h3>1. Product Managers, Founders & C-Level Executives</h3>
+            <p>Often, CTOs or lead developers block complex UI innovations due to a lack of time for deep R&D or fear of App Store rejection. As a leader, you don't need to force your team to do what they don't specialize in. You can delegate it to me.</p>
+            <ul>
+                <li><strong>Reduce Time-to-Market:</strong> While your engineers focus on critical business logic and backend, I build the UI module in parallel.</li>
+                <li><strong>Zero Risk:</strong> You receive an optimized native engine guaranteed to pass App Store Review. No "hacks," no memory crashes, and no user complaints about battery drain.</li>
+            </ul>
+
+            <h3>2. UI/UX & Motion Designers</h3>
+            <p>You spend weeks perfecting micro-interactions, but developers reject the file, claiming "the system can't handle it." No more compromises between design and code. I bridge the gap between your creative vision and Apple's strict architecture, translating your design pixel-perfectly with 60fps fluidity on real devices.</p>
+
+            <h3>3. Digital Agencies & Indie Developers</h3>
+            <p>Whether you have a client project with tight deadlines or an ambitious indie app, there is no need to waste resources reverse-engineering system frameworks. You get a Plug-and-Play solution that integrates into your codebase in 10 minutes.</p>
+        </section>
+
+        <section>
+            <h2>The Deliverable: Engineering over Design</h2>
+            <p>You are not buying a simple design asset. The deliverable is a compiled <code>XCFramework</code> binary built exclusively on Apple's native foundation (SwiftUI / CoreGraphics).</p>
+            <ul>
+                <li><strong>Extreme Optimization:</strong> A module with highly complex, multi-layered animation weighs only 50 to 150 KB.</li>
+                <li><strong>Infinite Scalability:</strong> Mathematical vector rendering guarantees crystal-clear sharpness on any screen, from classic iPhone widgets to massive 4x6 iPad panels, with zero pixelation.</li>
+                <li><strong>Cross-Platform Compatibility:</strong> The framework easily connects to pure Swift projects, as well as Flutter or React Native apps (via App Groups).</li>
+                <li><strong>Security & Isolation:</strong> The source code of your main app remains untouched. My mathematics are safely encapsulated inside the binary.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Frequently Asked Questions (FAQ)</h2>
+
+            <div class="faq-item">
+                <h4>My CTO / Lead iOS Developer claims continuous widget animation violates Apple guidelines and will be rejected. Is this true?</h4>
+                <p>This is a common myth caused by a misunderstanding of <em>how</em> Apple restricts widgets. Apple prohibits overflowing system memory and using unapproved background processes. However, the official WidgetKit documentation explicitly permits native SwiftUI animations. If the architecture is built mathematically correct (using <code>TimelineProvider</code> as a state dispatcher, not a frame generator), App Store moderators approve these applications without issue.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>We already have an animation in Lottie (or Rive). Can you just insert it into a widget?</h4>
+                <p>At the system level, Apple physically blocks the use of third-party rendering engines (like Lottie-ios or Rive) on the Home Screen. My service involves taking your Lottie file as a visual reference and manually rewriting it into a precise clone using pure SwiftUI code.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can't we just use a sequence of PNG images or a looping GIF instead of complex code?</h4>
+                <p>This is exactly what junior developers often attempt, and it is exactly why Apple rejects apps. A widget has a strict RAM limit (around 30 MB). A sequence of high-quality images overloads this limit in seconds, causing a Jetsam Event crash, leaving the widget frozen as a black square forever. Native vector animation via code consumes practically 0 MB of memory.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How does the animation affect iPhone battery life?</h4>
+                <p>Since all graphics are built on Apple's built-in system algorithms, rendering is delegated to the hardware level (GPU) with maximum energy efficiency. A widget with my custom XCFramework consumes exactly as much energy as Apple's own native clock widget.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>How much time and resources will my internal team need for integration?</h4>
+                <p>Practically zero. I handle all the engineering, reverse-engineering, and stress-testing. You only need to provide the vector source (Figma or Lottie) and your requirements. Your team won't be distracted from their current sprints. They only participate at the very end, spending 10 minutes dragging and dropping the finished XCFramework into Xcode.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Will we be able to change colors or animation speed after receiving the framework?</h4>
+                <p>Absolutely. You are not buying a locked "black box." I expose all necessary control parameters (public properties) outward. This means your developers can dynamically change colors (e.g., to support Dark/Light Mode), control opacity, scale, speed, or toggle animation states directly from your app's logic. You receive a highly flexible native tool that adapts to your needs.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How is the pricing structured?</h4>
+                <p>The budget depends solely on the mathematical complexity of the model. Basic geometry (abstractions, pulses, progress bars) is estimated at a baseline rate. Complex organic motion (facial expressions, movement along curved orbits, multi-layered characters) requires deep mathematical modeling and is quoted individually. You pay for a complete, stress-tested, release-ready module.</p>
+            </div>
+        </section>
+
+        <section style="text-align: center; margin-top: 50px;">
+            <p style="font-size: 1.2rem; margin-bottom: 5px;">Ready to bypass the limits and build something extraordinary?</p>
+            <a href="mailto:limooonik@gmail.com" class="contact-btn">Contact Me to Discuss Your Project</a>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Limooonik. SwiftUI widget continuous motion approach by Nikita Limo (Nikita Liubimov).</p>
+            <div style="margin-top: 15px;">
+                <a href="https://github.com/limooonik" rel="me" target="_blank">GitHub</a> | 
+                <a href="https://www.linkedin.com/in/limooonik/" rel="me" target="_blank">LinkedIn</a> | 
+                <a href="https://medium.com/@limooonik" rel="me" target="_blank">Medium</a> | 
+                <a href="https://dev.to/limooonik" rel="me" target="_blank">Dev.to</a> | 
+                <a href="https://www.youtube.com/@limooonik" rel="me" target="_blank">YouTube</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
