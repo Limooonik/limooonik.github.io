@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous Native iOS Widget Animation in pure SwiftUI | Architecture & App Store Review</title>
+    <meta name="description" content="A deep dive into the architecture of continuous native iOS widget animation using pure SwiftUI, Bézier curves, and TimelineProvider. Fully compliant with App Store guidelines.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GB3KNCXDJM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GB3KNCXDJM');
+    </script>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-main: #EAEAEA;
+            --text-muted: #A0A0A5;
+            --accent-orange: #FF6B00;
+            --accent-lilac: #9D4EDD;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        body::before {
+            top: -10%; left: -10%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, var(--accent-orange) 0%, transparent 70%);
+        }
+        body::after {
+            bottom: 10%; right: -15%;
+            width: 40vw; height: 40vw;
+            background: radial-gradient(circle, var(--accent-lilac) 0%, transparent 70%);
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 { 
+            font-size: clamp(2.2rem, 4vw, 3rem); 
+            letter-spacing: -0.02em; 
+            font-weight: 800; 
+            line-height: 1.2; 
+            margin-bottom: 0.5em;
+            background: linear-gradient(135deg, #FFF 0%, #A0A0A5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h2 { 
+            font-size: 1.6rem; 
+            letter-spacing: -0.015em; 
+            font-weight: 600; 
+            margin-top: 2.5em; 
+            margin-bottom: 1em;
+            color: #FFF;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.5em;
+        }
+
+        p { font-size: 1.15rem; margin-bottom: 1.5em; color: var(--text-main); }
+        
+        a { color: var(--accent-lilac); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s ease; }
+        a:hover { border-bottom: 1px solid var(--accent-lilac); }
+
+        ul { font-size: 1.15rem; padding-left: 20px; margin-bottom: 2em; color: var(--text-main); }
+        li { margin-bottom: 12px; }
+        li strong { color: #FFF; }
+
+        pre {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 15px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            color: #EAEAEA;
+            margin-bottom: 1.5em;
+        }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        p code, li code {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .shift-left {
+            margin-right: 5%;
+            padding-left: 20px;
+            border-left: 2px solid var(--accent-orange);
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2em;
+        }
+        
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .app-card h3 { margin-top: 0; color: #FFF; font-size: 1.2rem;}
+
+        footer { 
+            margin-top: 80px; 
+            font-size: 0.9rem; 
+            color: var(--text-muted); 
+            border-top: 1px solid var(--card-border); 
+            padding-top: 30px; 
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Navigation Breadcrumbs -->
+        <nav style="margin-bottom: 40px; font-size: 0.95rem; color: var(--text-muted);">
+            <a href="index.html">Home</a> &rarr; <span>Architecture & Documentation</span>
+        </nav>
+
+        <header>
+            <h1>Continuous Native iOS Widget Animation in Pure SwiftUI: Architecture & App Store Review</h1>
+        </header>
+
+        <section>
+            <p>Within the iOS developer community, a deep-rooted belief exists that creating continuous, fluid animation on home screen widgets is technically impossible due to Apple's strict refresh limits and resource allocation policies. Most attempts to realize such a UI boil down to using heavy image sequences or wrappers for video files, which inevitably leads to RAM overload, battery drain, and swift rejection during App Store Review.</p>
+            <p>However, this "technical impossibility" is a myth born from the wrong approach. Continuous animation is absolutely possible, provided the widget architecture is built exclusively on native, mathematically deterministic SwiftUI mechanisms, without attempting to "bypass" the system.</p>
+        </section>
+
+        <section>
+            <h2>Does Apple Allow Widget Animation? Official WidgetKit Documentation</h2>
+            <p>The official Apple documentation (in the <a href="https://developer.apple.com/documentation/widgetkit/animating-data-updates-in-widgets-and-live-activities" target="_blank">Animating data updates in widgets and Live Activities</a> section) explicitly states:</p>
+            <blockquote class="shift-left">
+                <em>"Widgets and Live Activities support all built-in SwiftUI transitions and animations."</em>
+            </blockquote>
+            <p>The system does not prohibit animation. It prevents the inefficient use of resources. Passing App Store Review goes smoothly: since the developer uses exclusively Apple's native ecosystem, it would be completely illogical for moderators to reject an application that works flawlessly and optimally on their own built-in technologies.</p>
+        </section>
+
+        <section>
+            <h2>Architecture Without GIF or Video: Bézier Curves (Path) and TimelineProvider</h2>
+            <p>Instead of forcing the <code>TimelineProvider</code> to manually refresh the widget dozens of times per second, the approach is built on orchestrating three core native components:</p>
+            
+            <ol>
+                <li><strong>Deterministic Timeline:</strong> <code>TimelineProvider</code> is used strictly for its intended purpose—it delivers key anchor states at permitted intervals. It does not generate the animation itself; it sets the schedule of states.</li>
+                <li><strong>Vector Geometry (Bézier Curves):</strong> All graphical elements are drawn via <code>Path</code>. Complex objects are not images, but pure mathematics:
+<pre><code>path.addCurve(to: CGPoint(x: toX, y: toY), 
+              control1: CGPoint(x: control1X, y: control1Y), 
+              control2: CGPoint(x: control2X, y: control2Y))</code></pre>
+                </li>
+                <li><strong>Native Interpolation:</strong> The heavy lifting is done by the standard SwiftUI modifier. When the timeline switches a state, the system hardware (via CoreGraphics) smoothly renders the morphing:
+<pre><code>.animation(.spring(response: 1.5, dampingFraction: 0.65), value: state)</code></pre>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Why Developers Give Up, or The Complexity of Native Vector Morphing</h2>
+            <p>The reason for the lack of such solutions in the market lies in the extremely high barrier to entry. Testing the fundamental principles of vector morphing inside <code>WidgetKit</code> and building a stable architecture takes months of deep R&D. However, now that the basic principle is clear and the core is built, creating a new complex animation takes no more time than assembling a standard file in popular editors like Lottie or Rive.</p>
+        </section>
+
+        <section>
+            <h2>Advantages of Pure SwiftUI: Dynamic Color, 100 KB Size, and Zero Battery Drain</h2>
+            <p>Utilizing pure code unlocks capabilities fundamentally unavailable to pre-rendered files:</p>
+            <ul>
+                <li><strong>Absolute Customization:</strong> In real-time, you can modify everything just like in the source vector file: shape, line thickness (<code>stroke</code>), transparency (<code>.opacity</code>), blur (<code>.blur</code>), scale (<code>.scaleEffect</code>), rotation (<code>.rotationEffect</code>, <code>.rotation3DEffect</code>), shadows (<code>.shadow</code>), and the color of any element, supporting the full spectrum of color models (RGB, HSB).</li>
+                <li><strong>Multi-layering and Reactivity:</strong> A single widget can run several independent animations concurrently (for example, a continuous looped background animation and simultaneously an instant reaction to a "tap"). Animations easily bind to events: time of day, achieving a new level in a game, a system reminder triggering, or toggling a native switch right on the widget.</li>
+                <li><strong>Extreme Optimization (50-100 KB):</strong> Once compiled, a highly complex animation weighs only 50-100 KB. An equivalent result in a video format would consume megabytes of memory.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Integration with Flutter, React Native, and Support for 4x6 Widgets in iOS 27</h2>
+            <p>Because the architecture is based on foundational Swift, it possesses 100% versatility:</p>
+            <ul>
+                <li><strong>Integration:</strong> The native Widget Extension is written in Swift but seamlessly integrates with any cross-platform projects on Flutter, React Native, and other frameworks (via App Groups).</li>
+                <li><strong>Dimensions:</strong> The graphics fit perfectly into any size—from the classic Small size up to the massive 4x6 widgets introduced in iOS 27.</li>
+                <li><strong>Ecosystem:</strong> Code written once requires no additional adaptations and runs natively on iPhone, iPad, macOS desktop widgets, in the Smart Stack on Apple Watch, and also supports 120Hz ProMotion on Pro device displays.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Proof of Concept: Offline Mode and Xcode Profiling</h2>
+            <p>Any developer can verify the absence of "hidden hacks" or server-side computations (convincing someone that we do not use third-party engines like Lottie/Rive is pointless, as iOS fundamentally blocks them at the widget level) by observing the following criteria:</p>
+            
+            <ol>
+                <li><strong>Full Autonomy (Offline mode):</strong> When network access is disabled (Airplane mode), continuous animation and dynamic color changes continue to work without interruptions.</li>
+                <li><strong>Infinite Zoom:</strong> When the graphics are heavily zoomed in, the quality remains crystal clear, without pixelation effects.</li>
+                <li><strong>Security Audit and Resource Profiling:</strong> The source code of the open XCFramework can be downloaded from <a href="https://github.com/Limooonik" target="_blank">my GitHub repository</a> and run through any static code analysis systems or <code>Xcode Instruments</code>. You will personally confirm that it exclusively uses Apple's native frameworks, exhibits no memory leaks, and places minimal load on the CPU.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Production Examples</h2>
+            <p>Evaluate the technology in production through published apps:</p>
+            
+            <div class="apps-grid">
+                <div class="app-card">
+                    <h3>Lim: Relaxing Animated Widgets</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 10px;">Interactive, aesthetic continuous animations.</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;"><em>(App Store link coming soon)</em></p>
+                </div>
+                
+                <div class="app-card">
+                    <h3>Clock Widgets Home Screen</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 10px;">Continuous native motion utility widgets.</p>
+                    <p><a href="https://apps.apple.com/us/app/clock-widgets-homescreen/id6755961385" target="_blank">View on App Store</a></p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Limooonik. SwiftUI widget continuous motion approach by Nikita Limo (Nikita Liubimov).</p>
+            <div style="margin-top: 15px;">
+                <a href="https://github.com/limooonik" rel="me" target="_blank">GitHub</a> | 
+                <a href="https://www.linkedin.com/in/limooonik/" rel="me" target="_blank">LinkedIn</a> | 
+                <a href="https://medium.com/@limooonik" rel="me" target="_blank">Medium</a> | 
+                <a href="https://dev.to/limooonik" rel="me" target="_blank">Dev.to</a> | 
+                <a href="https://www.youtube.com/@limooonik" rel="me" target="_blank">YouTube</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
