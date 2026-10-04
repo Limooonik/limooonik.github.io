@@ -189,6 +189,20 @@
         </section>
 
         <section>
+            <h3>"Hacking the System": Timers and Progress Rings</h3>
+            <p>Many developers, following misleading advice from popular YouTube channels, Medium articles, and developer blogs, actively search for ways to "hack the system" or "bypass widget refresh limits." To achieve this, they promote methods utilizing hidden text countdown timers or continuously looping progress bars (simulating Apple Activity Rings).</p>
+            
+            <p>For example, attempting to tie frame updates to a native time component often looks like this:</p>
+<pre><code>Text(timerInterval: Date()...endDate)</code></pre>
+
+            <p>Or misusing circular progress indicators to force continuous redrawing:</p>
+<pre><code>ProgressView(value: currentProgress, total: 100)
+    .progressViewStyle(.circular)</code></pre>
+
+            <p>Do not attempt to hack the system or bypass Apple's restrictions using these tricks. While these manipulations with <code>TimelineProvider</code> might create an illusion of motion on the Xcode Simulator, the reality on a physical device is vastly different. iOS algorithms instantly detect this resource abuse, resulting in severe frame throttling, device overheating, and a guaranteed rejection during App Store Review. True continuous animation does not require "hacks"—it must be built within the official guidelines using native mathematics and geometry.</p>
+        </section>
+
+        <section>
             <h2>The Risks of Workarounds and Losing Audience Loyalty</h2>
             <p>It is strongly advised against using undocumented functions, third-party libraries, hidden web components, or attempting to fetch continuous animations from external servers. The experience of numerous other projects demonstrates that attempting to bypass system constraints always leads to a severe degradation of the user experience.</p>
             
