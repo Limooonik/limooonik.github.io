@@ -199,18 +199,17 @@
 
         <section>
             <p>This article shatters the established stereotypes regarding the static limitations of mobile app widgets and proves that fluid, continuous native animation is a reality. This approach demands a profound understanding of vector geometry and mathematics. Below, we detail how to implement interactive multi-threaded rendering, zero-loss scaling, and instant state synchronization on the iOS Homescreen.</p>
-            <p>We present a complete technical teardown using a live, production-ready product—the <strong>Lim</strong> app—which has officially passed App Store Review and is available for testing right now.</p>
+            <p>We present a complete technical teardown using a live, production-ready product—the <strong><a href="https://apps.apple.com/us/app/eme-relaxing-animated-widgets/id6824027002" target="_blank">Eme: Relaxing Animated Widgets</a></strong> app—which has officially passed App Store Review and is available for testing right now.</p>
             
             <div class="img-container">
-                <!-- Замени 'hero-image-placeholder.jpg' на реальный путь к скриншоту макбука, когда он будет готов -->
-                <img src="hero-image-placeholder.jpg" alt="App Store preview on MacBook showcasing Lim app with multi-threaded interactive iOS widgets built with pure SwiftUI and Bézier curves.">
-                <div class="img-caption">App Store Preview: The Lim App ecosystem.</div>
+                <img src="eme.png" alt="App Store preview on MacBook showcasing Eme app with multi-threaded interactive iOS widgets built with pure SwiftUI and Bézier curves.">
+                <div class="img-caption">App Store Preview: The Eme App officially approved by Apple App Review.</div>
             </div>
         </section>
 
         <section>
             <h2>Part 1. The Vector Face: Multi-Threading & Granular Control</h2>
-            <p>The core widget of the Lim app is an interactive face that demonstrates the absolute limits of complex shape rendering in WidgetKit. This component integrates several advanced architectural solutions.</p>
+            <p>The core widget of the Eme app is an interactive face that demonstrates the absolute limits of complex shape rendering in WidgetKit. This component integrates several advanced architectural solutions.</p>
 
             <h3>Zero-Loss Vector Scaling</h3>
             <p>The app features zoom sliders that allow the user to magnify any part of the face and pan the focus to a specific element—for example, the right eye or the lips. The zoom coordinates are instantly passed to the widget. Because all graphics are drawn entirely via mathematics (using Bézier curves / <code>Path</code>), the widget maintains absolute line sharpness without the slightest pixelation, even at maximum zoom.</p>
@@ -221,19 +220,9 @@
             <h3>Parametric Morphing via AppIntents</h3>
             <p>Upon tapping the widget on the Homescreen, the geometry of the face fluidly morphs into an entirely new emotion. The structural changes of the right eye, the curvature of the lips, and the overall facial proportions are generated randomly and calculated in real time. This is not a pre-recorded video; it is pure mathematics that enables the generation of an infinite number of unique, seamless visual states directly on the user's desktop.</p>
 
-            <div class="img-container">
-                <!-- Замени 'eyes-placeholder.jpg' на картинку-коллаж с разными глазами -->
-                <img src="eyes-placeholder.jpg" alt="Macro view of parametric morphing on iOS widget, demonstrating zero-loss vector scaling and real-time random emotion generation via AppIntents without PNG sequences.">
-            </div>
-
             <h3>Concurrent Animation Threads</h3>
             <p>The major technological breakthrough becomes apparent when zooming into the left "cyber-eye". Upon closer inspection, you can see orbital rings continuously rotating around the central pupil. This orbital animation runs on its own looped timing cycle (spanning 1 to 2 minutes).</p>
             <p>The architecture allows the orbits to rotate in a background loop, while the user can simultaneously trigger the interactive morphing of the entire face via tap. Both animations run <strong>concurrently and independently</strong> on the exact same widget without causing desynchronization.</p>
-
-            <div class="img-container">
-                <!-- Замени 'cyber-eye-placeholder.jpg' на картинку-коллаж орбит кибер-глаза -->
-                <img src="cyber-eye-placeholder.jpg" alt="Concurrent animation threads on iOS widget: background orbital rotation running independently alongside interactive AppIntent morphing in pure SwiftUI.">
-            </div>
         </section>
 
         <section>
@@ -254,7 +243,7 @@
                 <li><strong>Zero Raster Hacks:</strong> What you see is physically impossible to achieve using PNG sequences, GIF files, or video fragments. We strictly <strong>do not use</strong> prohibited workarounds like forced redrawing via the <code>Text(timerInterval:)</code> component. This is 100% Pure Vector Geometry.</li>
                 <li><strong>Universal Placements (Homescreen, Lockscreen, Live Activities):</strong> This technology is not limited to the Homescreen. Because the rendering is written in pure SwiftUI, the mathematical animation is applied identically to Lockscreen widgets and Live Activities (including the Dynamic Island).</li>
                 <li><strong>Cross-Device Apple Ecosystem:</strong> The app and its animations can be tested on iPhone, iPad, and Mac. Furthermore, thanks to a unified SwiftUI codebase, this architecture is theoretically fully compatible with Apple Watch.</li>
-                <li><strong>Universal Triggers:</strong> The tap-based morphing shown in Lim is just one scenario. These animations can easily be triggered by in-app state changes, time intervals, system events, or Push Notifications.</li>
+                <li><strong>Universal Triggers:</strong> The tap-based morphing shown in Eme is just one scenario. These animations can easily be triggered by in-app state changes, time intervals, system events, or Push Notifications.</li>
                 <li><strong>Perfect for Cross-Platform:</strong> All of this highly complex native logic can be effortlessly wrapped into an XCFramework and integrated into <strong>Flutter</strong> or <strong>React Native</strong> projects, giving cross-platform apps an unprecedented level of native visual responsiveness on iOS.</li>
             </ul>
         </section>
@@ -271,7 +260,7 @@
 
         <section style="margin-top: 50px;">
             <h2>Conclusion</h2>
-            <p>We have practically proven that with the correct engineering approach, the Apple ecosystem is fully capable of sustaining highly complex multi-threaded animation and deep widget interactivity. The <code>Lim</code> and <code>Limooonik</code> applications are not just concepts—they establish a working standard for the next generation of B2B interfaces, ready for deployment in any corporate product.</p>
+            <p>We have practically proven that with the correct engineering approach, the Apple ecosystem is fully capable of sustaining highly complex multi-threaded animation and deep widget interactivity. The <code>Eme</code> and <code>Limooonik</code> applications are not just concepts—they establish a working standard for the next generation of B2B interfaces, ready for deployment in any corporate product.</p>
         </section>
 
         <footer>
